@@ -19,6 +19,7 @@
 
 ```shell
 sudo apt remove --purge nvidia* cuda* libcudnn*
+sudo apt autoremove
 ```
 
 ### インストールファイルの入手
@@ -29,14 +30,14 @@ CUDA Toolkit 9.2 Downloads](https://developer.nvidia.com/cuda-downloads)からLi
 
 ###  インストール
 
-再起動したら，ログイン画面でX serverを停止
+再起動したら，ログイン画面でCUIに移り，X serverを停止．
 
 ```shell
 sudo service lightdm stop
 pkill Xorg
 ```
 
-以下のように，CUDAをインストール
+以下のように，CUDAをインストール．
 
 ```shell
 sudo dpkg -i cuda-repo-ubuntu1604_9.2.*_amd64.deb
