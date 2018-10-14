@@ -9,13 +9,13 @@
 - cuDNN 7.2 for CUDA 9.2
 - tensorflow-gpu=1.10.0
 
-わざわざプロジェクトごとにTensorFlowや他のパッケージを導入するのもなぁと思い，pyenvでanaconda環境を用意しておいてそこに`conda install`で追加するという形にした．pyenv-virtualenvやconda-venvもありかなと思われる．またここではニューラルネットワークAPIとしてkerasを利用してみる．ちなみにUbuntu 18.04 LTSでもインストールを試みたがnvidia-396ドライバがうまく動作しないようで諦めた．(tensorflow-gpuは動く)
+わざわざプロジェクトごとにTensorFlowや他のパッケージを導入するのもなぁと思い，pyenvでanaconda環境を用意しておいてそこに`conda install`などで追加するという形にした．pyenv-virtualenvやconda-venvもありかなと思われる．ちなみにUbuntu 18.04 LTSでもインストールを試みたがnvidia-396ドライバがうまく動作しないようで諦めた．(tensorflow-gpuは動く)
 
 ## インストール手順
 
 ### 準備
 
-古いパッケージの削除．`dpkg -l | grep nvidia`などで余計なものが残っていないか見ておくのもあり．
+古いパッケージの削除．`dpkg -l | grep nvidia`などとして余計なものが残っていないか見ておくのもあり．
 
 ```shell
 sudo apt remove --purge nvidia* cuda* libcudnn*
@@ -24,7 +24,7 @@ sudo apt autoremove
 
 ### インストールファイルの入手
 
-CUDA Toolkit 9.2 Downloads](https://developer.nvidia.com/cuda-downloads)からLinux→x86_64→Ubuntu→16.04→.deb(network)と進み，.debファイルをダウンロードしておく．
+[CUDA Toolkit 9.2 Downloads](https://developer.nvidia.com/cuda-downloads)から，Linux→x86_64→Ubuntu→16.04→.deb(network)と進み，.debファイルをダウンロードしておく．
 
 そして再起動．
 
@@ -48,9 +48,9 @@ sudo apt install cuda
 
 完了後，再起動．
 
-### PATHの確認
+### PATH
 
-.bashrcなどに以下の行があるか確認
+.bashrcなどに以下の行を追加．
 
 ```shell 
 export PATH=/usr/local/cuda/bin:${PATH}
@@ -107,6 +107,3 @@ Using TensorFlow backend．
 となることを確認しておく．
 
 [mnist_cnn.py](https://github.com/keras-team/keras/blob/master/examples/mnist_cnn.py)などのサンプルコードがきちんと動くか，また，別ウィンドウで`nvidia-smi -l 5`などとして計算にGPUがきちんと利用されているかをモニターしながらコードを実行して，問題なければ作業は完了．
-
-
-
