@@ -74,7 +74,7 @@ $$
 盤面は、隣接リストで表現する。
 `heapq`モジュールでヒープを利用する。
 
-```python=
+```python
 def aStar(start):
     adjacent = ((1, 3), (0, 2, 4), (1, 5), (0, 4, 6), (1, 3, 5, 7), (2, 4, 8), (3, 7), (4, 6, 8), (5, 7))
     goal = [1,2,3,4,5,6,7,8,0]
@@ -105,7 +105,7 @@ def aStar(start):
 
 ### ヒューリスティック関数
 
-```python=
+```python
 # 現状態と最終状態で違う要素の数
 def heuristic1(state):
     goal = [1,2,3,4,5,6,7,8,0]
@@ -134,7 +134,7 @@ def heuristic2(state):
 
 ### ノードクラス
 
-```python=
+```python
 class node:
     def __init__(self, state, depth, space):
         self.state = state
